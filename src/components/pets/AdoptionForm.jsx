@@ -37,7 +37,7 @@ const AdoptionForm = ({pet}) => {
 
                     <input
                         type="text"
-                        value={user?.name}
+                        value={user?.name || ""}
                         readOnly
                         className="w-full px-4 py-3 rounded-2xl border border-slate-200 bg-slate-100 text-slate-600 outline-none"
                     />
@@ -51,7 +51,7 @@ const AdoptionForm = ({pet}) => {
 
                     <input
                         type="email"
-                        value={user?.email}
+                        value={user?.email || ""}
                         readOnly
                         className="w-full px-4 py-3 rounded-2xl border border-slate-200 bg-slate-100 text-slate-600 outline-none"
                     />

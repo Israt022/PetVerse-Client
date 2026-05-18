@@ -37,6 +37,11 @@ const LoginPage = () => {
 
             
     }
+    const handleGoogleSignin = async()=>{
+        await signIn.social({
+            provider: "google",
+        });
+    }
 
     return (
         <div className="max-w-5xl mx-auto my-16">
@@ -139,7 +144,7 @@ const LoginPage = () => {
                         </span>
                         <hr className="flex-1 border-gray-300" />
                     </div>
-                    <Button className="w-full" variant="tertiary">
+                    <Button onClick={handleGoogleSignin} className="w-full" variant="tertiary">
                         <FcGoogle icon="devicon:google" />
                         Sign in with Google
                     </Button>

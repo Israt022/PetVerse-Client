@@ -8,7 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 import Image from "next/image";
 import Link from "next/link";
 import { formCsrfMiddleware } from "better-auth/api";
-import { signUp } from "@/lib/auth-client";
+import { signIn, signUp } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
@@ -42,6 +42,13 @@ const RegisterPage = () => {
 
          
     }
+
+    const handleGoogleSignup = async()=>{
+        await signIn.social({
+            provider: "google",
+        });
+    }
+
     return (
         <div className="max-w-5xl mx-auto my-16">
             <Card className="p-10 flex flex-col justify-between gap-16 items-center lg:flex-row">
@@ -191,7 +198,7 @@ const RegisterPage = () => {
                         </span>
                         <hr className="flex-1 border-gray-300" />
                     </div>
-                    <Button className="w-full" variant="tertiary">
+                    <Button onClick={handleGoogleSignup} className="w-full" variant="tertiary">
                         <FcGoogle icon="devicon:google" />
                         Sign in with Google
                     </Button>
