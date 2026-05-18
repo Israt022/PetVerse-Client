@@ -6,7 +6,7 @@ import FeatureSlider from "./FeatureSlider";
 
 const FeaturePage = async() => {
     const features = await getFeaturePets();
-    console.log(features);
+
     return (
         <section className="py-24 bg-gradient-to-b from-white to-yellow-50">
 

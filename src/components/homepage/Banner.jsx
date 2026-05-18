@@ -140,17 +140,17 @@ const Banner = () => {
                     {/* Buttons */}
                     <div className="flex flex-wrap items-center gap-4 mt-8">
                     
-                    <Link href="/pets">
-                        <button className="bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-500 hover:to-yellow-600 text-slate-900 font-bold px-8 py-4 rounded-full shadow-lg shadow-yellow-300/40 hover:scale-105 transition-all duration-300">
-                        Adopt Now
-                        </button>
-                    </Link>
+                        <Link href="/pets">
+                            <button className="bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-500 hover:to-yellow-600 text-slate-900 font-bold px-8 py-4 rounded-full shadow-lg shadow-yellow-300/40 hover:scale-105 transition-all duration-300">
+                            Adopt Now
+                            </button>
+                        </Link>
 
-                    <Link href="/pets">
-                        <button className="border-2 border-amber-400 text-amber-500 hover:bg-amber-400 hover:text-slate-900 font-semibold px-8 py-4 rounded-full transition-all duration-300">
-                        Explore Pets
-                        </button>
-                    </Link>
+                        <Link href="/pets">
+                            <button className="border-2 border-amber-400 text-amber-500 hover:bg-amber-400 hover:text-slate-900 font-semibold px-8 py-4 rounded-full transition-all duration-300">
+                            Explore Pets
+                            </button>
+                        </Link>
 
                     </div>
 
