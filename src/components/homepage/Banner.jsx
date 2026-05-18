@@ -14,12 +14,22 @@ import 'swiper/css/navigation';
 
 
 // import required modules
-import { Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 
 const Banner = () => {
   return (
     <section className="bg-gradient-to-br from-yellow-50 via-white to-amber-50 overflow-hidden">
-      <Swiper pagination={true} navigation={true} modules={[Pagination, Navigation]} className="mySwiper">
+      <Swiper 
+        pagination={true} 
+        // navigation={true} 
+        autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+        }}
+        speed={1000}
+        loop={true}
+        modules={[Pagination,Autoplay]} 
+        className="mySwiper">
         {/* Slider 1 */}
         <SwiperSlide>
             <div className="max-w-5xl mx-auto px-6 py-16 lg:py-24">

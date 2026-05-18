@@ -4,7 +4,12 @@ import { FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn, FaPaw } from "react-i
 const Footer = () => {
     return (
         <div>
-            <footer className="bg-slate-900 text-gray-300">
+                <footer className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-black text-gray-300 overflow-hidden">
+
+                {/* Background Glow */}
+                <div className="absolute top-0 left-0 w-72 h-72 bg-amber-400/10 blur-3xl rounded-full"></div>
+                <div className="absolute bottom-0 right-0 w-72 h-72 bg-yellow-300/10 blur-3xl rounded-full"></div>
+
                 <div className="max-w-7xl mx-auto px-6 py-14">
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
