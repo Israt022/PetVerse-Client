@@ -1,6 +1,7 @@
 // import { LuMapPin, LuVenus, LuMars, LuHeart } from "react-icons/lu";
 
 import { LucideMars, LucideVenus } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { LuHeart, LuMapPin } from "react-icons/lu";
 
@@ -24,12 +25,17 @@ const FeatureCard = ({feature}) => {
 
       {/* Image Section */}
       <div className="relative h-52 w-full overflow-hidden">
-        <img
+        {/* <img
           src={image}
           alt={petName}
           className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+        /> */}
+        <Image
+            src={image || "https://images.unsplash.com/photo-1563460716037-460a3ad24ba9?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHBldHN8ZW58MHx8MHx8fDA%3D"}
+            alt={petName}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
-
         {/* Status Badge */}
         <div
           className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold shadow-sm

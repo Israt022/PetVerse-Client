@@ -21,23 +21,34 @@ const FeatureSlider = ({ features }) => {
   return (
     <div className="w-full max-w-6xl mx-auto px-4 ">
         <Swiper
-        onSwiper={setSwiperRef}
-        autoplay={{
-            delay: 1000,
-            disableOnInteraction: false,
-        }}
-        speed={1000}
-        loop={true}
-        slidesPerView={3}
-        centeredSlides={true}
-        spaceBetween={30}
-        pagination={{
-          type: 'fraction',
-        }}
-        navigation={true}
-        modules={[Pagination,Autoplay, Navigation]}
-        className="mySwiper"
-      >
+            onSwiper={setSwiperRef}
+            autoplay={{
+                delay: 1000,
+                disableOnInteraction: false,
+            }}
+            speed={1000}
+            loop={true}
+            // slidesPerView={3}
+            centeredSlides={true}
+            spaceBetween={30}
+            pagination={{
+            type: 'fraction',
+            }}
+            navigation={true}
+            modules={[Pagination,Autoplay, Navigation]}
+            breakpoints={{
+                320: {
+                slidesPerView: 1,
+                },
+                640: {
+                slidesPerView: 2,
+                },
+                1024: {
+                slidesPerView: 3,
+                },
+            }}
+            className="mySwiper"
+        >
         {features.map((feature) => (
           <SwiperSlide key={feature._id}>
             <FeatureCard feature={feature} />
