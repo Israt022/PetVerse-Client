@@ -1,0 +1,95 @@
+// import { LuMapPin, LuVenus, LuMars, LuHeart } from "react-icons/lu";
+
+import { LucideMars, LucideVenus } from "lucide-react";
+import Link from "next/link";
+import { LuHeart, LuMapPin } from "react-icons/lu";
+
+const FeatureCard = ({feature}) => {
+
+    const {
+        _id,
+        petName,
+        species,
+        breed,
+        age,
+        gender,
+        image,
+        location,
+        adoptionFee,
+        adopted,
+    } = feature;
+
+    return (
+        <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-1">
+
+      {/* Image Section */}
+      <div className="relative h-52 w-full overflow-hidden">
+        <img
+          src={image}
+          alt={petName}
+          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+
+        {/* Status Badge */}
+        <div
+          className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold shadow-sm
+          ${
+            adopted
+              ? "bg-yellow-100 text-yellow-700"
+              : "bg-green-100 text-green-700"
+          }`}
+        >
+          {adopted ? "Pending Adoption" : "Available"}
+        </div>
+
+        {/* Fee Badge */}
+        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-slate-800">
+          ${adoptionFee}
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-5 space-y-3">
+
+        {/* Name + Species */}
+        <div>
+          <h3 className="text-xl font-bold text-slate-900">{petName}</h3>
+          <p className="text-sm text-slate-500">
+            {species} • {breed}
+          </p>
+        </div>
+
+        {/* Info Row */}
+        <div className="flex flex-wrap gap-3 text-sm text-slate-600">
+
+          <span className="px-3 py-1 bg-slate-100 rounded-full">
+            Age: {age}
+          </span>
+
+          <span className="px-3 py-1 bg-slate-100 rounded-full flex items-center gap-1">
+            {/* {gender === "Male" ? <LucideMars /> : <LucideVenus />} */}
+            {gender}
+          </span>
+
+          <span className="px-3 py-1 bg-slate-100 rounded-full flex items-center gap-1">
+            <LuMapPin size={14} />
+            {location}
+          </span>
+
+        </div>
+
+        {/* Button */}
+        <Link href={`/pets/${_id}`}>
+            <button className="w-full mt-3 flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-500 text-white font-semibold py-2.5 rounded-xl transition">
+                <LuHeart size={18} />
+                View Details
+            </button>
+        </Link>
+
+      </div>
+    </div>
+    );
+};
+
+export default FeatureCard;
+
