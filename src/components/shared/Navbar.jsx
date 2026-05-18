@@ -18,7 +18,7 @@ const Navbar = () => {
     const router = useRouter();
     const {data:session,isPending} = useSession();
     const user = session?.user;
-    console.log(user);
+    // console.log(user);
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 10);
         window.addEventListener("scroll", handleScroll);

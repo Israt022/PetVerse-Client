@@ -1,6 +1,7 @@
+import AdoptionForm from '@/components/pets/AdoptionForm';
 import { getPetsById } from '@/lib/pets/data';
 import { Button, Card } from '@heroui/react';
-import { Calendar, LocateIcon, PawPrint } from 'lucide-react';
+import { Calendar, PawPrint } from 'lucide-react';
 import Image from 'next/image';
 import { CiLocationOn } from 'react-icons/ci';
 import { FaRegUser } from 'react-icons/fa6';
@@ -10,6 +11,7 @@ import { TfiMoney } from 'react-icons/tfi';
 
 const PetsDetailsPage = async({params}) => {
     const {id} = await params;
+
     const pet = await getPetsById(id);
     const {
         _id,
@@ -172,82 +174,7 @@ const PetsDetailsPage = async({params}) => {
                         </div>
 
                         {/* Form */}
-                        <form className="space-y-5 mt-8">
-
-                            {/* Pet Name */}
-                            <div>
-                                <label className="text-sm font-medium text-slate-700 mb-2 block">
-                                    Pet Name
-                                </label>
-
-                                <input
-                                    type="text"
-                                    value={petName}
-                                    readOnly
-                                    className="w-full px-4 py-3 rounded-2xl border border-slate-200 bg-slate-100 text-slate-600 outline-none"
-                                />
-                            </div>
-
-                            {/* User Name */}
-                            <div>
-                                <label className="text-sm font-medium text-slate-700 mb-2 block">
-                                    Your Name
-                                </label>
-
-                                <input
-                                    type="text"
-                                    placeholder="Enter your name"
-                                    className="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                                />
-                            </div>
-
-                            {/* User Email */}
-                            <div>
-                                <label className="text-sm font-medium text-slate-700 mb-2 block">
-                                    Your Email
-                                </label>
-
-                                <input
-                                    type="email"
-                                    placeholder="Enter your email"
-                                    className="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                                />
-                            </div>
-
-                            {/* Date */}
-                            <div>
-                                <label className="text-sm font-medium text-slate-700 mb-2 block">
-                                    Adoption Date
-                                </label>
-
-                                <input
-                                    type="date"
-                                    className="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                                />
-                            </div>
-
-                            {/* Message */}
-                            <div>
-                                <label className="text-sm font-medium text-slate-700 mb-2 block">
-                                    Message
-                                </label>
-
-                                <textarea
-                                    rows={4}
-                                    placeholder="Why do you want to adopt this pet?"
-                                    className="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 resize-none"
-                                />
-                            </div>
-
-                            {/* Button */}
-                            <Button
-                                type="submit"
-                                className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 rounded-2xl transition-all duration-300"
-                            >
-                                Submit Adoption Request
-                            </Button>
-
-                        </form>
+                        <AdoptionForm pet={pet} />
                     </Card>
                 </div>
             </div>
