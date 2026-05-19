@@ -86,7 +86,7 @@ const Navbar = () => {
                                 </div>
                             </div>
                         :<>
-                            <Link href="/login" className="font-medium text-slate-700 hover:text-blue-600 transition-colors">Login</Link>
+                            <Link href="/login" className="font-medium text-slate-700 hover:text-yellow-600 transition-colors">Login</Link>
                             <Link href="/register">
 
                                 <Button color="primary" className="font-bold rounded-full px-8 bg-gradient-to-r from-amber-400 to-yellow-500 text-white shadow-lg shadow-amber-400/30 hover:scale-105 transition-all duration-300">
@@ -110,7 +110,7 @@ const Navbar = () => {
             {isMenuOpen && (
                 <div className="md:hidden px-4 pt-2 pb-6 space-y-2 bg-white border-b border-slate-200 animate-in slide-in-from-top duration-300">
                 <Link href="/" className="block px-4 py-3 text-base font-medium text-slate-900 hover:bg-slate-50 rounded-xl">Home</Link>
-                <Link href="/courses" className="block px-4 py-3 text-base font-medium text-slate-900 hover:bg-slate-50 rounded-xl">All Pets</Link>
+                <Link href="/pets" className="block px-4 py-3 text-base font-medium text-slate-900 hover:bg-slate-50 rounded-xl">All Pets</Link>
                     <div className="pt-4 border-t border-border mt-4">
                         {
                             user 

@@ -1,7 +1,9 @@
 import AdoptionForm from '@/components/pets/AdoptionForm';
+import { auth } from '@/lib/auth';
 import { getPetsById } from '@/lib/pets/data';
 import { Button, Card } from '@heroui/react';
 import { Calendar, PawPrint } from 'lucide-react';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 import { CiLocationOn } from 'react-icons/ci';
 import { FaRegUser } from 'react-icons/fa6';
@@ -11,8 +13,11 @@ import { TfiMoney } from 'react-icons/tfi';
 
 const PetsDetailsPage = async({params}) => {
     const {id} = await params;
-
-    const pet = await getPetsById(id);
+    const {token} = await auth.api.getToken({
+        headers: await headers() // headers containing the user's session token
+    });
+    
+    const pet = await getPetsById(id,token);
     const {
         _id,
         petName,

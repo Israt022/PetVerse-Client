@@ -56,7 +56,7 @@ const RegisterPage = () => {
                 <div className="space-y-5">
                     <h1 className="text-2xl font-bold mb-5 text-yellow-500">Create you account</h1>
                     <Form
-                            className="flex w-96 flex-col gap-4"
+                            className="w-full max-w-md flex flex-col gap-4"
                             render={(props) => <form {...props} data-custom="foo" />}
                             onSubmit={handleRegister}
                         >

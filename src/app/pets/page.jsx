@@ -1,10 +1,17 @@
 import PetCard from '@/components/pets/PetCard';
 import PetsSearchField from '@/components/pets/PetsSearchField';
 import { getAllPets } from '@/lib/pets/data';
+import { PawPrint } from 'lucide-react';
 import React from 'react';
 
-const PetsPage = async() => {
-    const pets = await getAllPets();
+const PetsPage = async({searchParams}) => {
+    const params = await searchParams
+    console.log(params);
+    const pets = await getAllPets(
+        params?.search || "",
+        params?.category || "",
+        params?.sort || "",
+    );
     return (
         <div>
             {/* heading */}
@@ -24,11 +31,30 @@ const PetsPage = async() => {
 
                 <PetsSearchField/>
             </div>
-            <div className='max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-10'>
+            
                 {
-                    pets.map(pet => <PetCard key={pet._id} pet={pet}/>)
+
+                    params?.search && pets.length === 0
+                    ?
+                    <div className="max-w-5xl mx-auto text-center flex flex-col justify-center items-center py-20">
+                        <PawPrint size={22} className='text-yellow-500' />
+                        <h2 className="text-3xl font-bold text-slate-700">
+                            No Pets Found 
+                        </h2>
+
+                        <p className="text-slate-500 mt-3">
+                            No result found for {""}
+                            <span className="font-semibold text-yellow-500">
+                               {params.search}
+                            </span>
+                            {""}
+                        </p>
+                    </div>
+                    :
+                    <div className='max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-10'>
+                        {pets.map(pet => <PetCard key={pet._id} pet={pet}/>)}
+                    </div>
                 }
-            </div>
         </div>
     );
 };
