@@ -93,7 +93,7 @@ const PetsSearchField = () => {
                     <SearchField.Input 
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        className="w-[280px]" 
+                        className="w-full" 
                         placeholder="Search yor pets..." 
                     />
                     <SearchField.ClearButton />
