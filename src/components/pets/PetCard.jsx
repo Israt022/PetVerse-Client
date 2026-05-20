@@ -30,7 +30,7 @@ const PetCard = ({ pet }) => {
             <div className="relative h-64 overflow-hidden">
 
                 <Image
-                    src={pet?.image?.startsWith("http") ? image : "https://i.pinimg.com/736x/26/e2/39/26e239adf8dbbbb024c75ab52b594292.jpg"}
+                    src={image || "https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHBldHxlbnwwfHwwfHx8MA%3D%3D"}
                     alt={petName}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"

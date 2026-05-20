@@ -11,7 +11,10 @@ const DashboardSidebar = () => {
 
     const pathname = usePathname();
     const [open, setOpen] = useState(false);
-    const {data:session} = useSession();
+    const {data:session,isPending} = useSession();
+
+    if (isPending) return null;
+
     const user = session?.user;
     if (!session?.user) {
         return null;

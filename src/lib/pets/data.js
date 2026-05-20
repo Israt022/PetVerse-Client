@@ -35,10 +35,38 @@ export const postPet = async(pets) =>{
         method : 'POST',
         headers : {
             'content-type' : 'application/json',
-            // authorization : token ? `Bearer ${token}` : ""
+            // authorization : `Bearer ${token}`
         },
         body : JSON.stringify(pets)
     });
+    const data = await res.json();
+
+    return data || "";
+}
+
+// adoption get 
+export const getAdoption = async(userId,token) =>{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adoption/${userId}`,{
+        headers:{
+            authorization : `Bearer ${token}` || ""
+        }
+    })
+
+    const data = await res.json();
+
+    return data || "";
+}
+// adoption post 
+export const postAdoption = async(adopt,token) =>{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adoption`,{
+        method : 'POST',
+        headers : {
+            'content-type' : 'application/json',
+            authorization : token ? `Bearer ${token}` : ""
+        },
+        body : JSON.stringify(adopt)
+    })
+
     const data = await res.json();
 
     return data || "";

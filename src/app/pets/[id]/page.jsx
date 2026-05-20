@@ -14,7 +14,7 @@ import { TfiMoney } from 'react-icons/tfi';
 const PetsDetailsPage = async({params}) => {
     const {id} = await params;
     const {token} = await auth.api.getToken({
-        headers: await headers() // headers containing the user's session token
+        headers: await headers() 
     });
     
     const pet = await getPetsById(id,token);
@@ -179,7 +179,7 @@ const PetsDetailsPage = async({params}) => {
                         </div>
 
                         {/* Form */}
-                        <AdoptionForm pet={pet} />
+                        <AdoptionForm pet={pet} token={token}/>
                     </Card>
                 </div>
             </div>

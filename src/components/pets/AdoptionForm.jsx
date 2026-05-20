@@ -1,19 +1,42 @@
-'use client'
+"use client";
 
 import { useSession } from '@/lib/auth-client';
+import { postAdoption } from '@/lib/pets/data';
 import { Button } from '@heroui/react';
 import React from 'react';
+import toast from 'react-hot-toast';
 
-const AdoptionForm = ({pet}) => {
+const AdoptionForm = ({pet,token}) => {
     const {data:session} = useSession();
     const user = session?.user;
-    console.log(session);
+    // console.log(user,"user info");
+    // console.log(token);
     const {
+        _id,
         petName,
     } = pet;
+
+    const handleAdoptPet = async(e) =>{
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const adoptData = Object.fromEntries(formData.entries());
+        const data = {
+            ...adoptData,
+            petId : _id,
+            userId: user?.id,
+        }
+        const adoption = await postAdoption(data,token);
+        if(!adoption){
+            toast.error("Adoption Failed!");
+            return;
+        }
+        toast.success("Adoption successfully!");
+        // console.log(adoptData,"AdoptData form data");
+        // console.log(adoption,"Adopt form data");
+    }
     return (
         <div>
-            <form className="space-y-5 mt-8">
+            <form onSubmit={handleAdoptPet} className="space-y-5 mt-8">
 
                 {/* Pet Name */}
                 <div>
@@ -23,6 +46,7 @@ const AdoptionForm = ({pet}) => {
 
                     <input
                         type="text"
+                        name="petName"
                         value={petName}
                         readOnly
                         className="w-full px-4 py-3 rounded-2xl border border-slate-200 bg-slate-100 text-slate-600 outline-none"
@@ -37,6 +61,7 @@ const AdoptionForm = ({pet}) => {
 
                     <input
                         type="text"
+                        name="userName"
                         value={user?.name || ""}
                         readOnly
                         className="w-full px-4 py-3 rounded-2xl border border-slate-200 bg-slate-100 text-slate-600 outline-none"
@@ -51,6 +76,7 @@ const AdoptionForm = ({pet}) => {
 
                     <input
                         type="email"
+                        name="userEmail"
                         value={user?.email || ""}
                         readOnly
                         className="w-full px-4 py-3 rounded-2xl border border-slate-200 bg-slate-100 text-slate-600 outline-none"
@@ -65,6 +91,7 @@ const AdoptionForm = ({pet}) => {
 
                     <input
                         type="date"
+                        name="adoptionDate"
                         className="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                     />
                 </div>
@@ -77,6 +104,7 @@ const AdoptionForm = ({pet}) => {
 
                     <textarea
                         rows={4}
+                        name="message"
                         placeholder="Why do you want to adopt this pet?"
                         className="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 resize-none"
                     />
