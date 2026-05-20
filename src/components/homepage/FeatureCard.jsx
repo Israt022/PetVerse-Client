@@ -69,7 +69,7 @@ const FeatureCard = ({feature}) => {
         <div className="flex flex-wrap gap-3 text-sm text-slate-600">
 
           <span className="px-3 py-1 bg-slate-100 rounded-full">
-            Age: {age}
+            Age: {age} Old
           </span>
 
           <span className="px-3 py-1 bg-slate-100 rounded-full flex items-center gap-1">

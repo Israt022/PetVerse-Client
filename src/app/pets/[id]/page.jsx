@@ -111,7 +111,7 @@ const PetsDetailsPage = async({params}) => {
                                     <Calendar className='text-yellow-500'/>
                                     <div>
                                         <p className="text-slate-500 text-sm">Age</p>
-                                        <h3 className="font-semibold">{age}</h3>
+                                        <h3 className="font-semibold">{age} Old</h3>
                                     </div>
                                 </div>
 

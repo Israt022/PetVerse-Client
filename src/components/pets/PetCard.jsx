@@ -30,7 +30,7 @@ const PetCard = ({ pet }) => {
             <div className="relative h-64 overflow-hidden">
 
                 <Image
-                    src={image || "https://i.pinimg.com/736x/26/e2/39/26e239adf8dbbbb024c75ab52b594292.jpg"}
+                    src={pet?.image?.startsWith("http") ? image : "https://i.pinimg.com/736x/26/e2/39/26e239adf8dbbbb024c75ab52b594292.jpg"}
                     alt={petName}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -76,7 +76,7 @@ const PetCard = ({ pet }) => {
                 <div className="flex flex-wrap gap-2 mt-5">
 
                     <span className="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-sm font-medium">
-                        {age} Years
+                        {age} Old
                     </span>
 
                     <span className="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-sm font-medium">
