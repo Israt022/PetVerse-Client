@@ -53,7 +53,21 @@ const MyRequestTable = ({request = []}) => {
                                     ? new Date(req.adoptionDate).toLocaleDateString()
                                     : "Not selected"}
                                 </Table.Cell>
-                                <Table.Cell>{req.status}</Table.Cell>
+                                {/* <Table.Cell>{req.status}</Table.Cell> */}
+                                <Table.Cell>
+                                    <span
+                                        className={`px-3 py-1 rounded-full text-xs font-semibold
+                                        ${
+                                            req.status === "pending"
+                                            ? "bg-yellow-100 text-yellow-700"
+                                            : req.status === "approved"
+                                            ? "bg-green-100 text-green-700"
+                                            : "bg-red-100 text-red-700"
+                                        }`}
+                                    >
+                                        {req.status}
+                                    </span>
+                                </Table.Cell>
                                 <Table.Cell className={"flex flex-wrap items-center gap-2"}>
                                     <Link href={`/pets/${req.petId}`}>
                                         <Button variant="outline" className="text-yellow-500 hover:text-white hover:bg-amber-500 text-white font-semibold py-3 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2">
@@ -61,7 +75,14 @@ const MyRequestTable = ({request = []}) => {
                                             View
                                         </Button>
                                     </Link>
-                                    <Button variant="danger" onClick={()=>handleCancelAdoption(req._id)} >Cancel</Button>
+                                    {req.status === "pending" && (
+                                        <Button
+                                            variant="danger"
+                                            onClick={() => handleCancelAdoption(req._id)}
+                                        >
+                                            Cancel
+                                        </Button>
+                                    )}
                                 </Table.Cell>
                             </Table.Row>
                             ))

@@ -40,12 +40,15 @@ const PetCard = ({ pet }) => {
                 <div
                     className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md
                     ${
-                        adopted
-                        ? "bg-yellow-100/90 text-yellow-700"
-                        : "bg-green-100/90 text-green-700"
-                    }`}
-                >
-                    {adopted ? "Pending" : "Available"}
+                        pet.adoptionStatus === "available"
+                        ? "bg-green-100 text-green-700"
+                        : pet.adoptionStatus === "pending"
+                        ? "bg-yellow-100 text-yellow-700"
+                        : "bg-red-100 text-red-700"
+                    }`}>
+                        {pet.adoptionStatus === "available" && "Available"}
+                        {pet.adoptionStatus === "pending" && "Pending"}
+                        {pet.adoptionStatus === "adopted" && "Adopted"}
                 </div>
 
                 {/* Fee */}
@@ -117,12 +120,37 @@ const PetCard = ({ pet }) => {
                             View Details
                         </Button>
                     </Link>
-                    <Link href={`/pets/${_id}`}>
-                        <Button className="w-full mt-6 bg-amber-400 hover:bg-amber-500 text-white font-semibold py-3 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2">
+                    {/* Adopt Button */}
+                    {pet.adoptionStatus === "available" ? (
+
+                        <Link href={`/pets/${_id}`}>
+                            <Button className="w-full mt-6 bg-amber-400 hover:bg-amber-500 text-white font-semibold py-3 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2">
+                                <PawPrint size={18} />
+                                Adopt Now
+                            </Button>
+                        </Link>
+
+                    ) : pet.adoptionStatus === "pending" ? (
+
+                        <Button
+                            disabled
+                            className="w-full mt-6 bg-yellow-300 text-white font-semibold py-3 rounded-2xl flex items-center justify-center gap-2 cursor-not-allowed"
+                        >
                             <PawPrint size={18} />
-                            Adopt now
+                            Request Pending
                         </Button>
-                    </Link>
+
+                    ) : (
+
+                        <Button
+                            disabled
+                            className="w-full mt-6 bg-gray-300 text-white font-semibold py-3 rounded-2xl flex items-center justify-center gap-2 cursor-not-allowed"
+                        >
+                            <PawPrint size={18} />
+                            Already Adopted
+                        </Button>
+
+                    )}
 
                 </div>
 

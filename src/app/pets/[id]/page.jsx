@@ -16,7 +16,14 @@ const PetsDetailsPage = async({params}) => {
     const {token} = await auth.api.getToken({
         headers: await headers() 
     });
-    
+
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    });
+
+    const user = session?.user;
+    console.log(user);
+        
     const pet = await getPetsById(id,token);
     const {
         _id,
@@ -57,11 +64,15 @@ const PetsDetailsPage = async({params}) => {
                         </div>
                         <Button className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md
                         ${
-                            adopted
-                            ? "bg-yellow-100/90 text-yellow-700"
-                            : "bg-green-300/95 border-2 border-green-300 text-green-700"
+                            pet.adoptionStatus === "available"
+                            ? "bg-green-100 text-green-700"
+                            : pet.adoptionStatus === "pending"
+                            ? "bg-yellow-100 text-yellow-700"
+                            : "bg-red-100 text-red-700"
                         }`}>
-                            {adopted ? "Pending" : "Available"}
+                            {pet.adoptionStatus === "available" && "Available"}
+                            {pet.adoptionStatus === "pending" && "Pending"}
+                            {pet.adoptionStatus === "adopted" && "Adopted"}
                         </Button>
                         </Card.Footer>
                     </Card>
@@ -179,7 +190,31 @@ const PetsDetailsPage = async({params}) => {
                         </div>
 
                         {/* Form */}
-                        <AdoptionForm pet={pet} token={token}/>
+                        {/* Owner can't adopt own pet */}
+                        {user?.email === ownerEmail ? (
+
+                            <div className="mt-6 flex flex-col-reverse items-center gap-2 text-center px-4 py-4 rounded-xl bg-blue-100 text-blue-700 font-semibold">
+                                You created this pet. You cannot adopt your own pet <PawPrint/>
+                            </div>
+
+                        ) : pet.adoptionStatus === "pending" ? (
+
+                            <div className="mt-6 flex flex-col-reverse items-center gap-2 text-center px-4 py-4 rounded-xl bg-yellow-100 text-yellow-700 font-semibold">
+                                Someone has already requested to adopt this pet. Please wait for owner approval <PawPrint/>
+                            </div>
+
+                        ) : pet.adoptionStatus === "adopted" ? (
+
+                            <div className="mt-6 flex flex-col-reverse items-center gap-2 text-center px-4 py-4 rounded-xl bg-red-100 text-red-700 font-semibold">
+                                This pet has already been adopted <PawPrint/>
+                            </div>
+
+                        ) : (
+
+                            <AdoptionForm pet={pet} token={token} />
+
+                        )}
+                        {/* <AdoptionForm pet={pet} token={token}/> */}
                     </Card>
                 </div>
             </div>

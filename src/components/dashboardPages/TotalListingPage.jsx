@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import DeletePets from "./DeletePets";
 import EditPet from "./EditPet";
+import RequestModal from "./RequestModal";
 
 const TotalListingPage = ({pets}) => {
     console.log(pets,"From total page");
@@ -68,11 +69,7 @@ const TotalListingPage = ({pets}) => {
                             <div className="grid grid-cols-2 gap-3 pt-3">
 
                                 {/* Requests */}
-                                <button
-                                    className="border border-yellow-400 text-yellow-500 hover:bg-yellow-500 hover:text-white font-semibold py-2 rounded-lg transition"
-                                >
-                                    Requests
-                                </button>
+                                <RequestModal petId={pet._id}/>
 
                                 {/* View */}
                                 <Link href={`/pets/${pet._id}`}>

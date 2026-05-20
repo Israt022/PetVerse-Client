@@ -17,7 +17,7 @@ const FeatureCard = ({feature}) => {
         image,
         location,
         adoptionFee,
-        adopted,
+        adoptionStatus
     } = feature;
 
     return (
@@ -40,12 +40,15 @@ const FeatureCard = ({feature}) => {
         <div
           className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold shadow-sm
           ${
-            adopted
+              adoptionStatus === "available"
+              ? "bg-green-100 text-green-700"
+              : adoptionStatus === "pending"
               ? "bg-yellow-100 text-yellow-700"
-              : "bg-green-100 text-green-700"
-          }`}
-        >
-          {adopted ? "Pending Adoption" : "Available"}
+              : "bg-red-100 text-red-700"
+          }`}>
+              {adoptionStatus === "available" && "Available"}
+              {adoptionStatus === "pending" && "Pending"}
+              {adoptionStatus === "adopted" && "Adopted"}
         </div>
 
         {/* Fee Badge */}
