@@ -22,8 +22,9 @@ const MyRequestTable = ({request = []}) => {
     }
 
     return (
-        <div>
-            <Table variant="secondary">
+        <div className="text-slate-900 dark:text-white">
+            <Table className="text-slate-900 dark:text-white bg-white dark:bg-slate-900">
+            {/* <Table variant="secondary" className="text-slate-900 dark:text-white"> */}
                 <Table.ScrollContainer>
                     <Table.Content aria-label="Team members" className="min-w-[600px]">
                     <Table.Header>

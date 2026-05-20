@@ -24,7 +24,7 @@ const MyListingsClient = ({ pets }) => {
                     onClick={() => setActiveTab("total")}
                     className="py-5 px-3 rounded-md bg-white shadow-sm flex-col gap-2"
                 >
-                    <h1 className="text-2xl font-bold">{total || 0}</h1>
+                    <h1 className="text-2xl text-yellow-500 font-bold">{total || 0}</h1>
                     <p className="text-gray-500 font-bold">Total Listings</p>
                 </div>
                 {/* div - 2 */}

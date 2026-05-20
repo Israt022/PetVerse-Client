@@ -10,6 +10,7 @@ import { FaPaw } from "react-icons/fa";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { signOut, useSession } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import ThemeControl from "./ThemeControl";
 
 
 const Navbar = () => {
@@ -30,16 +31,24 @@ const Navbar = () => {
         router.push("/login");
     }
     return (
-        <nav className={`sticky top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-white/70 backdrop-blur-md shadow-sm py-2" : "bg-slate-50 py-1"
+        <nav className={`sticky top-0 w-full z-50 transition-all duration-300 ${scrolled 
+            ? 
+            "bg-white/70 dark:text-black dark:bg-slate-900 backdrop-blur-md shadow-sm py-2" 
+            : "bg-slate-50 dark:text-black dark:bg-slate-900  py-1"
             }`}>
+        {/* <nav className={`sticky top-0 w-full z-50 transition-all duration-300 ${
+            scrolled
+                ? "bg-white/70 dark:bg-slate-900 backdrop-blur-md shadow-sm py-2"
+                : "bg-slate-50 dark:bg-slate-950 py-1"
+            }`}> */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16 items-center">
                     <div className="flex items-center">
                         <Link href="/" className="relative flex items-center gap-2 group hover:scale-110 transition-all duration-300">
                             <div className="bg-amber-500 p-2 rounded-full">
-                                    <FaPaw className="text-white text-xl" />
+                                    <FaPaw className="text-white text-xl  !text-white dark:!text-black" />
                             </div>
-                            <h1 className="absolute left-5 top-2 text-2xl font-bold">
+                            <h1 className="absolute left-5 top-2 text-2xl  !text-black dark:!text-white font-bold">
                                 Pet<span className="text-amber-400">Verse</span>
                             </h1>
                         </Link>
@@ -51,10 +60,11 @@ const Navbar = () => {
                     </div>
 
                     <div className="hidden md:flex items-center gap-4">
+                        <ThemeControl />
                         {
                             user
                             ? 
-                            <div className="relative group">
+                            <div className="relative group ">
                                 <button 
                                     className="flex items-center gap-3 p-1 rounded-full hover:bg-muted transition-colors border border-transparent hover:border-border"
                                 >
@@ -66,16 +76,18 @@ const Navbar = () => {
                                         className="w-10 h-10 rounded-full object-cover ring-2 ring-blue-600/10"
                                     />
                                     <div className="text-left hidden lg:block">
-                                        <p className="text-sm font-bold truncate max-w-25">{user?.name}</p>
+                                        <p className="text-sm font-bold truncate max-w-25 !text-black dark:!text-white">
+                                            {user?.name}
+                                        </p>
                                         <p className="text-[10px] text-slate-500">Student</p>
                                     </div>
                                 </button>
                                 <div 
-                                    className="absolute right-0 top-12 w-56 bg-white border border-slate-200 rounded-2xl shadow-2xl hidden group-hover:flex flex-col py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200"
+                                    className="absolute dark:text-slate-900 right-0 top-12 w-56 bg-white border border-slate-200 rounded-2xl shadow-2xl hidden group-hover:flex flex-col py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200"
                                 >
                                     <div className="px-4 py-3 border-b border-slate-100">
                                         <p className="font-bold text-sm">Welcome back!</p>
-                                        <p className="text-xs truncate text-slate-500">{user?.email}</p>
+                                        <p className="text-xs truncate text-slate-500 ">{user?.email}</p>
                                     </div>
                                     <Link href="/dashboard" className="px-4 py-2 text-sm hover:bg-muted flex items-center gap-3 transition-colors">
                                         <LayoutDashboard className="w-4 h-4" /> Dashboard
