@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=32&pause=1000&color=FFD700&center=true&vCenter=true&width=500&lines=PetVerse+🐾;Adopt+Love+%F0%9F%92%96;Find+Your+Perfect+Pet" />
+</p>
+<p align="center">💖 A Modern Pet Adoption Platform built with MERN Stack 💖</p>
 
-## Getting Started
+---
 
-First, run the development server:
+## 📌 Project Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**PetVerse** is a full-stack pet adoption platform designed to connect pet lovers with pets in need of a home. Users can browse pets, view detailed information, and submit adoption requests. Pet owners or shelters can manage pet listings and handle adoption requests efficiently.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project simulates a real-world adoption system with secure authentication, protected routes, and scalable backend APIs.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🌐 Live Links
 
-## Learn More
+🔗 **Live Site:** https://pet-verse-mu.vercel.app
 
-To learn more about Next.js, take a look at the following resources:
+🔗 **Server API:** https://pet-verse-server-lovat.vercel.app/ 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Features
 
-## Deploy on Vercel
+- 🔐 JWT Authentication with HTTP-only cookies  
+- 👤 User registration & login system  
+- 🐶 Browse all available pets  
+- 🔍 Search pets by name  
+- 🧬 Filter pets by species (Dog, Cat, Bird, Rabbit, etc.)  
+- 📄 View detailed pet profiles  
+- ❤️ Submit adoption requests (logged-in users only)  
+- 🚫 Prevent adoption without login (redirect to login)  
+- 🏠 Add new pet (private route)  
+- ✏️ Update pet details (owner only)  
+- ❌ Delete pet listing (owner only)  
+- 📋 My Requests page (track adoption status)  
+- 📦 My Listings dashboard for owners  
+- 📥 Approve / Reject adoption requests  
+- 🐕 Auto-mark pets as “Adopted” after approval  
+- 📱 Fully responsive design (mobile/tablet/desktop)  
+- 🔔 Toast notifications (no alert())  
+- ⏳ Loading spinner for data fetching  
+- ❌ Custom 404 page  
+- 🎯 Protected routes with middleware  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠️ Tech Stack
+
+### Frontend
+- Next.js  
+- Tailwind CSS  
+- Fetch API   
+- React Hot Toast  
+- Framer Motion (optional)  
+- Lucide React / React Icons  
+
+### Backend
+- Node.js  
+- Express.js  
+- MongoDB 
+- JWT Authentication  
+- cors  
+- dotenv  
+
+---
+
+## 📦 NPM Packages
+
+### Client Side
+- next
+- react-hot-toast
+- react-icons
+- framer-motion
+
+### Server Side
+- express
+- cors
+- dotenv
+
+---
+
+## 🔐 Authentication Flow
+
+- User registers or logs in
+- Server generates JWT token
+- Middleware verifies token for private routes
+- Role-based access control (User / Owner)
+
+---
+
+## 🧩 Core Modules
+
+### 🐾 Pets Module
+- Add Pet  
+- Update Pet  
+- Delete Pet  
+- View Pet Details  
+- Mark as Adopted  
+
+### 📩 Adoption Module
+- Submit Adoption Request  
+- View Request Status  
+- Cancel Request  
+- Approve / Reject Requests (Owner only)  
+
+### 👤 User Module
+- Register  
+- Login  
+- Role-based authorization  
+
+---
+
